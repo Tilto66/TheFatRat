@@ -23,7 +23,7 @@ read -rsp var
 esac	
 }	
 rchk () {
-apt-get update &> /tmp/aptkey.log 
+pacman -Suuy &> /tmp/aptkey.log 
 awk '{print $1}' RS='NO_PUBKEY' /tmp/aptkey.log | sed '1d' > /tmp/expkeys.log
 awk '{print $1}' RS='EXPKEYSIG' /tmp/aptkey.log | sed '1d' >> /tmp/expkeys.log
 sort /tmp/expkeys.log | uniq > /tmp/expkeystmp.log
